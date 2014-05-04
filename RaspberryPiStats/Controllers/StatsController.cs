@@ -20,24 +20,23 @@ namespace RaspberryPiStats.Controllers
 
 
         [HttpGet]
-        public JsonResult StatsPerSecond()
+        public JsonResult GatherNumbers(string runname)
         {
             var theColleciton = GetCollection();
-            var query = theColleciton.AsQueryable<ServerStat>().ToList();
+            var query = theColleciton.AsQueryable<ServerStat>()
+                .Where(s => s.runName.ToLower() == runname.ToLower())
+                .ToList();
 
             var someStats = query
                   .GroupBy(stat =>
-                      new
-                      {
-                          Time = string.Format("{0:MM/dd/yyyy H:mm:ss}", stat.creationDate),
-                          NodeName = stat.osHostName,
-                          RunName = stat.runName
-                      })
+                          new
+                          {
+                              NodeName = stat.osHostName
+                          })
                   .Select(stat => new
                   {
-                      StatPerSecond = stat.Count(),
-                      Node = stat.Key.NodeName,
-                      RunName = stat.Key.RunName
+                      NumberOfTransactions = stat.Count(),
+                      Node = stat.Key.NodeName
                   })
                   .ToList();
 
@@ -67,8 +66,8 @@ namespace RaspberryPiStats.Controllers
                 stat.runName.ToLower() == runName.ToLower())
             .Select(stat => new
             {
-                MemoryUsage = stat.osTotalMemory - stat.osFreeMemory,
-                CurrentTime = stat.startDate
+                MemoryUsage = Math.Ceiling(Convert.ToDouble(((stat.osTotalMemory - stat.osFreeMemory) / 1048576).ToString())),
+                CurrentTime = stat.startDate.Ticks
             })
             .ToList();
 
