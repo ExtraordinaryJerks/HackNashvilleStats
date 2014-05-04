@@ -24,5 +24,6 @@ namespace RaspberryPiStats.Models
         public DateTime creationDate { get; set; }
         public int __v { get; set; }
         public string runName { get; set; }
+        public DateTime startDate { get; set; }
     }
 }

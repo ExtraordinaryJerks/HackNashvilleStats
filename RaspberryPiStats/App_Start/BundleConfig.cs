@@ -25,7 +25,11 @@ namespace RaspberryPiStats
                       "~/Content/css/style.min.css",
                       "~/Content/site.css"));
 
+<<<<<<< HEAD
             bundles.Add(new ScriptBundle("~/bundles/flot").Include("~/Content/js/jquery.flot.min.js"));
+=======
+            bundles.Add(new ScriptBundle("~/bundles/flot").Include("~/Scripts/flot/jquery.flot.min.js", "~/Scripts/flot/jquery.flot.time.min.js"));
+>>>>>>> f999e4cc57deb2f37759127d2cf03a312e5d4a8f
         }
     }
 }
