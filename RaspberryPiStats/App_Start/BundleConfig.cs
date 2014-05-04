@@ -24,7 +24,7 @@ namespace RaspberryPiStats
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/flot").Include("~/Scripts/flot/jquery.flot.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/flot").Include("~/Scripts/flot/jquery.flot.min.js", "~/Scripts/flot/jquery.flot.time.min.js"));
         }
     }
 }
