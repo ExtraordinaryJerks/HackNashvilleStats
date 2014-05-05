@@ -9,7 +9,8 @@ namespace RaspberryPiStats
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Content/js/jquery-{version}.min.js"));
+                "~/Content/js/jquery-2.1.0.min.js"));
+                        //"~/Content/js/jquery-{version}.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -25,11 +26,7 @@ namespace RaspberryPiStats
                       "~/Content/css/style.min.css",
                       "~/Content/site.css"));
 
-<<<<<<< HEAD
             bundles.Add(new ScriptBundle("~/bundles/flot").Include("~/Content/js/jquery.flot.min.js"));
-=======
-            bundles.Add(new ScriptBundle("~/bundles/flot").Include("~/Scripts/flot/jquery.flot.min.js", "~/Scripts/flot/jquery.flot.time.min.js"));
->>>>>>> f999e4cc57deb2f37759127d2cf03a312e5d4a8f
         }
     }
 }
